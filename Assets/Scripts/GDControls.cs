@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class GDControls : MonoBehaviour
 {
+    public GameObject interactIcon;//For the interaction Icon.
+
     public float speed;
     private Rigidbody2D rb;
     private bool facingright = true;
     private float moveDirection;
     private Animator animator;
+
+    private Vector2 boxSize = new Vector2(0.1f, 1f);
 
     private void Awake()
     {
@@ -18,11 +22,16 @@ public class GDControls : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.E))//On E key press it will interact with the first object.
+        {
+            CheckInteractIcon();
+        }
+
         moveDirection = Input.GetAxis("Horizontal");
 
         if (moveDirection != 0)
         {
-            animator.SetBool("ghostwalk",true);
+            animator.SetBool("ghostwalk", true);
         }
         else
         {
@@ -36,7 +45,7 @@ public class GDControls : MonoBehaviour
         else if (moveDirection < 0 && facingright)
         {
             FlipCharacter();
-        }    
+        }
         rb.velocity = new Vector2(moveDirection * speed, rb.velocity.y);
     }
 
@@ -44,5 +53,32 @@ public class GDControls : MonoBehaviour
     {
         facingright = !facingright;
         transform.Rotate(0f, 180f, 0f);
+    }
+
+    public void OpenInteractableIcon()//Opens the interaction icon.
+    {
+        interactIcon.SetActive(true);
+    }
+
+    public void CloseInteractableIcon()//Closes the interaction icon.
+    {
+        interactIcon.SetActive(false);
+    }
+
+    private void CheckInteractIcon()//Checks if interaction is possible.
+    {
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, boxSize, 0, Vector2.zero);
+
+        if(hits.Length > 0)
+        {
+            foreach(RaycastHit2D rc in hits)
+            {
+                if (rc.transform.GetComponent<Interactable>())
+                {
+                    rc.transform.GetComponent<Interactable>().Interact();
+                    return;
+                }
+            }
+        }
     }
 }
