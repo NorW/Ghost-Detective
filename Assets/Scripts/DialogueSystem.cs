@@ -122,6 +122,10 @@ public class DialogueSystem : MonoBehaviour
             {
                 node.type = DialogueNodeType.Choice;
             }
+            else if( type == 'p' )
+            {
+                node.type = DialogueNodeType.Prompt;
+            }
             else
             {
                 return null;
@@ -142,8 +146,11 @@ public class DialogueSystem : MonoBehaviour
 
             switch( tag )
             {
-                case DialogueTagType.Name:
-                    node.alias = GetAlias( line, ref tagIndex );
+                case DialogueTagType.Alias:
+                    node.alias = GetName( line, ref tagIndex );
+                    break;
+                case DialogueTagType.Owner:
+                    node.owner = GetName( line, ref tagIndex );
                     break;
                 case DialogueTagType.Required:
                     node.tagsRequired = GetPlayerTags( line, ref tagIndex );
@@ -166,14 +173,14 @@ public class DialogueSystem : MonoBehaviour
         }
     }
 
-    private string GetAlias( string line, ref int tagIndex )
+    private string GetName( string line, ref int tagIndex )
     {
         int start = tagIndex;
         tagIndex = line.IndexOf( '$', start );
 
         if( tagIndex == -1 )
         {
-            tagIndex = line.Length;
+            tagIndex = line.Length + 1;
         }
 
         return line.Substring( start, tagIndex - start - 1 ).Trim();
@@ -207,8 +214,9 @@ public class DialogueSystem : MonoBehaviour
 
     private string GetDialogue( string line, ref int tagIndex )
     {
+        string dialogue = line.Substring( tagIndex );
         tagIndex = line.Length;
-        return line.Substring( tagIndex ).Trim();
+        return dialogue.Trim();
     }
 
     private DialogueTagType GetNextTag( string line, ref int index )
@@ -228,7 +236,7 @@ public class DialogueSystem : MonoBehaviour
         switch( line[ index++ ] )
         {
             case 'n':
-                return DialogueTagType.Name;
+                return DialogueTagType.Alias;
             case 'r':
                 return DialogueTagType.Required;
             case 'g':
@@ -237,6 +245,8 @@ public class DialogueSystem : MonoBehaviour
                 return DialogueTagType.GOTO;
             case 't':
                 return DialogueTagType.Text;
+            case 'o':
+                return DialogueTagType.Owner;
         }
 
         return DialogueTagType.INVALID;
@@ -290,44 +300,32 @@ public enum DialogueNodeType
 {
     Top,
     Dialogue,
-    Choice
+    Choice,
+    Prompt
 }
 
 public enum DialogueTagType
 {
     INVALID,
-    Name,
+    Alias,
     Required,
     Gives,
     GOTO,
-    Text
+    Text,
+    Owner
 }
 
 public class DialogueNode
 {
     public DialogueNodeType type;
-    public string[] tagsRequired;
-    public string[] tagsGiven;
+    public string[] tagsRequired = null;
+    public string[] tagsGiven = null;
     public string owner;
     public string alias = null;
     public int nodeLevel;
     public DialogueNode parent = null;
-    public List<DialogueNode> children = null;
+    public List<DialogueNode> children = new List<DialogueNode>();
     public string goToTarget = null;
     public string dialogue = "";
     //public bool or enum display portrait? or int
-
-    public DialogueNode GetNextNode()
-    {
-        var player = PlayerState.Instance;
-        foreach( var child in children )
-        {
-            if( player.HasAllTags(child.tagsRequired) )
-            {
-                return child;
-            }
-        }
-
-        return null;
-    }
 }
