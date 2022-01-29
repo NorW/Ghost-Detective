@@ -1,0 +1,9 @@
+t $o Death
+	d $o Death $t asfasdf
+t $o Ghost1
+t $o Ghost2
+t $o CriminalLover
+t $o DeathsDoor
+	d $o DeathsDoor $r key,badge $t time to investigate
+		d $o Death $t sure bud
+	d $o DeathsDoor $t doors closed
