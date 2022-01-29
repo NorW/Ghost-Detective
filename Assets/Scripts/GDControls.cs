@@ -1,28 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class GDControls : MonoBehaviour
 {
-    public float speed = 0;
+    public float speed;
     private Rigidbody2D rb;
+    private bool facingright = true;
+    private float moveDirection;
+    private Animator animator;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-    }
-    private Vector2 movementVector;
-    
-    void OnMove(InputValue movementValue)
-    {
-        movementVector = movementValue.Get<Vector2>();
+        animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        rb.AddForce(movementVector*speed);
+        moveDirection = Input.GetAxis("Horizontal");
+
+        if (moveDirection != 0)
+        {
+            animator.SetBool("ghostwalk",true);
+        }
+        else
+        {
+            animator.SetBool("ghostwalk", false);
+        }
+
+        if (moveDirection > 0 && !facingright)
+        {
+            FlipCharacter();
+        }
+        else if (moveDirection < 0 && facingright)
+        {
+            FlipCharacter();
+        }    
+        rb.velocity = new Vector2(moveDirection * speed, rb.velocity.y);
+    }
+
+    private void FlipCharacter()
+    {
+        facingright = !facingright;
+        transform.Rotate(0f, 180f, 0f);
     }
 }
