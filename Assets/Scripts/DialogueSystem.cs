@@ -4,13 +4,52 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using System.IO;
 
+public enum DialogueNodeType
+{
+    Top,
+    Dialogue,
+    Choice,
+    Prompt
+}
+
+public enum DialogueTagType
+{
+    INVALID,
+    Alias,
+    Required,
+    Gives,
+    GOTO,
+    Text,
+    Owner
+}
+
+public class DialogueNode
+{
+    public DialogueNodeType type;
+    public string[] tagsRequired = null;
+    public string[] tagsGiven = null;
+    public string owner;
+    public string alias = null;
+    public int nodeLevel;
+    public DialogueNode parent = null;
+    public List<DialogueNode> children = new List<DialogueNode>();
+    public string goToTarget = null;
+    public string dialogue = "";
+    //public bool or enum display portrait? or int
+}
+
 public class DialogueSystem : MonoBehaviour
 {
     private static DialogueSystem instance = null;
 
+    public static DialogueSystem Instance { get { return instance; } }
+
     [ SerializeField ] TextAsset dialogue;
+    [ SerializeField] DialogController dialogueDisplay;
 
     private Dictionary<string, DialogueNode> dialogueTrees = null;
+
+    private DialogueNode curNode = null;
 
     private void LoadDialogueTrees()
     {
@@ -278,10 +317,7 @@ public class DialogueSystem : MonoBehaviour
         }
     }
 
-    public DialogueNode StartDialogue( string conversationTarget )
-    {
-        return dialogueTrees[ conversationTarget ];
-    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -294,38 +330,43 @@ public class DialogueSystem : MonoBehaviour
     {
         
     }
+
+    public void StartDialogue( string conversationTarget )
+    {
+        curNode = dialogueTrees[ conversationTarget ];
+        NextLine();
+    }
+
+    public void NextLine( int choice = 0 )
+    {
+        if( curNode == null )
+        {
+            return;
+        }
+
+        if( curNode.children.Count == 0 )
+        {
+            return;
+        }
+
+        var player = PlayerState.Instance;
+
+        foreach ( var node in curNode.children )
+        {
+            if( player.HasAllTags(node.tagsRequired) )
+            {
+                curNode = node;
+                break;
+            }
+        }
+
+        if( curNode == null )
+        {
+            return;
+        }
+
+        dialogueDisplay.SetName( curNode.alias != null ? curNode.alias : curNode.owner );
+        dialogueDisplay.SetDialogue( curNode.dialogue );
+    }
 }
 
-public enum DialogueNodeType
-{
-    Top,
-    Dialogue,
-    Choice,
-    Prompt
-}
-
-public enum DialogueTagType
-{
-    INVALID,
-    Alias,
-    Required,
-    Gives,
-    GOTO,
-    Text,
-    Owner
-}
-
-public class DialogueNode
-{
-    public DialogueNodeType type;
-    public string[] tagsRequired = null;
-    public string[] tagsGiven = null;
-    public string owner;
-    public string alias = null;
-    public int nodeLevel;
-    public DialogueNode parent = null;
-    public List<DialogueNode> children = new List<DialogueNode>();
-    public string goToTarget = null;
-    public string dialogue = "";
-    //public bool or enum display portrait? or int
-}

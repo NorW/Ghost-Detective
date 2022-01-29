@@ -1,3 +1,16 @@
+t $o Opening
+	d $o Ghost Detective $n ??? $t ...
+		d $o Death $n ??? $t Hey Bub, I've got bad news for you. You died, and I know that because I am Death.
+			d $o Ghost Detective $n ??? $t Huh… that's unfortunate. How did it happen?
+				d $o Death $t How would I know? [Shrugs] You were alive and then you weren't. That's it.
+					d $o Ghost Detective $n ??? $t I see… so someone was at fault here. I must find them!
+						d $o Death $t What? Ugh… humans are so dramatic, even in the after life.
+							d $o Death $t Here, it sounds to me like you’re about to do something stupid. So, take this and call me when you're done.
+								d $o Ghost Detective $n ??? $t Ok, captain. I accept this badge and will honor it until I find the one responsible for my demise.
+									d $o Death $t I…, I am no captain, and that is not a badge. It's a magical rock named ‘Dwayne’ for you to summon me when you're done. 
+										d $o Ghost Detective $n ??? $t I'm sure I'll get to the bottom of this mystery because I am… GHOST DETECTIVE!
+											d $o Death $t Oh my Gods…. Whatever, see you later.
+												d $o Ghost Detective $t And so my journey begins…
 t $o Death
 	d $o Death $t asfasdf
 t $o Ghost1

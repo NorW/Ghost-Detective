@@ -35,6 +35,11 @@ public class PlayerState : MonoBehaviour
 
     public void RemoveTags( string[] tags )
     {
+        if ( tags == null )
+        {
+            return;
+        }
+
         foreach ( string tag in tags )
         {
             playerTags.Remove( tag );
@@ -43,6 +48,11 @@ public class PlayerState : MonoBehaviour
 
     public bool HasAllTags( string[] tags )
     {
+        if( tags == null)
+        {
+            return true;
+        }
+
         foreach( string tag in tags )
         {
             if( !playerTags.Contains( tag ) )
@@ -56,6 +66,11 @@ public class PlayerState : MonoBehaviour
 
     public bool HasAnyTag( string[] tags )
     {
+        if ( tags == null )
+        {
+            return false;
+        }
+
         foreach ( string tag in tags )
         {
             if ( playerTags.Contains( tag ) )

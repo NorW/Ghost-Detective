@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class DialogController : MonoBehaviour
 {
@@ -25,6 +26,15 @@ public class DialogController : MonoBehaviour
     void Update()
     {
         //Check for changes made to dialog box
+        if( Input.GetKeyDown( KeyCode.KeypadEnter ) )
+        {
+            DialogueSystem.Instance.StartDialogue( "Opening" );
+        }
+
+        if( Input.GetKeyDown( KeyCode.X) )
+        {
+            DialogueSystem.Instance.NextLine();
+        }
     }
 
     public void Dialog()
@@ -39,4 +49,13 @@ public class DialogController : MonoBehaviour
         //Loop for next chunk of dialog?
     }
 
+    public void SetDialogue( string dialogue )
+    {
+        dbDialog.GetComponent< TextMeshProUGUI >().text = dialogue;
+    }
+
+    public void SetName( string name )
+    {
+        dbName.GetComponent<TextMeshProUGUI>().text = name;
+    }
 }
