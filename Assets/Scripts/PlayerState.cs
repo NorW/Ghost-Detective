@@ -27,7 +27,12 @@ public class PlayerState : MonoBehaviour
     }
     public void AddTags( string[] tags )
     {
-        foreach( string tag in tags )
+        if ( tags == null )
+        {
+            return;
+        }
+
+        foreach ( string tag in tags )
         {
             playerTags.Add( tag );
         }

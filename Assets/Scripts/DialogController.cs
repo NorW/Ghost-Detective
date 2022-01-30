@@ -76,4 +76,10 @@ public class DialogController : MonoBehaviour
         firstOption.SetActive(true);
         secondOption.SetActive(true);
     }
+
+    public void HideOptions()
+    {
+        firstOption.SetActive( false );
+        secondOption.SetActive( false );
+    }
 }

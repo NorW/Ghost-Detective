@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Button2Controller : MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class Button2Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dsystem = gameObject.GetComponent("DialogueSystem") as DialogueSystem;
+        Button btn = GetComponent<Button>();
+        btn.onClick.AddListener( OnClick );
     }
 
 
@@ -21,6 +23,6 @@ public class Button2Controller : MonoBehaviour
 
     void OnClick()
     {
-        dsystem.NextLine(1);
+        DialogueSystem.Instance.NextLine( 1);
     }
 }
