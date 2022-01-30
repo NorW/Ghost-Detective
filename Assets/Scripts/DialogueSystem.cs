@@ -9,7 +9,8 @@ public enum DialogueNodeType
     Top,
     Dialogue,
     Choice,
-    Prompt
+    Prompt,
+    Cutscene
 }
 
 public enum DialogueTagType
@@ -36,6 +37,8 @@ public class DialogueNode
     public string goToTarget = null;
     public string dialogue = "";
     //public bool or enum display portrait? or int
+
+    public string cutscene = null;
 }
 
 public class DialogueSystem : MonoBehaviour
@@ -339,13 +342,22 @@ public class DialogueSystem : MonoBehaviour
 
     public void NextLine( int choice = 0 )
     {
-        if( curNode == null )
+        if ( curNode == null )
         {
+            SetDialogueVisible( false );
             return;
         }
 
-        if( curNode.children.Count == 0 )
+        //If curNode is a choice, switch to choice selected
+        if ( curNode.type == DialogueNodeType.Choice || curNode.type == DialogueNodeType.Prompt )
         {
+            curNode = curNode.parent.children[ choice ];
+            SetDialogueVisible( true );
+        }
+
+        if ( curNode.children.Count == 0 )
+        {
+            SetDialogueVisible( false );
             return;
         }
 
@@ -353,20 +365,47 @@ public class DialogueSystem : MonoBehaviour
 
         foreach ( var node in curNode.children )
         {
-            if( player.HasAllTags(node.tagsRequired) )
+            if ( player.HasAllTags( node.tagsRequired ) )
             {
                 curNode = node;
+                SetDialogueVisible( true );
                 break;
             }
         }
 
-        if( curNode == null )
+        if ( curNode == null )
         {
+            SetDialogueVisible( false );
             return;
         }
+    
+        switch( curNode.type )
+        {
+            case DialogueNodeType.Choice:
+                break;
 
-        dialogueDisplay.SetName( curNode.alias != null ? curNode.alias : curNode.owner );
-        dialogueDisplay.SetDialogue( curNode.dialogue );
+            case DialogueNodeType.Prompt:
+                break;
+
+            case DialogueNodeType.Dialogue:
+                dialogueDisplay.SetName( curNode.alias != null ? curNode.alias : curNode.owner );
+                dialogueDisplay.SetDialogue( curNode.dialogue );
+                break;
+
+            case DialogueNodeType.Cutscene:
+                CutsceneManager.Instance.StartCutscene( curNode.cutscene );
+                break;
+        }
+    }
+
+    public void SetDialogueVisible( bool visible )
+    {
+        dialogueDisplay.SetActive( visible );
+    }
+
+    public bool IsDialogueVisible()
+    {
+        return dialogueDisplay.IsActive();
     }
 }
 

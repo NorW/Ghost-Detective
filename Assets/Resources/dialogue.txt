@@ -11,12 +11,6 @@ t $o Opening
 										d $o Ghost Detective $n ??? $t I'm sure I'll get to the bottom of this mystery because I am… GHOST DETECTIVE!
 											d $o Death $t Oh my Gods…. Whatever, see you later.
 												d $o Ghost Detective $t And so my journey begins…
-t $o Death
-	d $o Death $t asfasdf
-t $o Ghost1
-t $o Ghost2
-t $o CriminalLover
-t $o DeathsDoor
-	d $o DeathsDoor $r key,badge $t time to investigate
-		d $o Death $t sure bud
-	d $o DeathsDoor $t doors closed
+t $o scene2
+	d $o Ghost Detective $t The streets are ripe with crime, I smell it, and feel it. The city, it speaks to me and I’m its protector. Come on city, give me something!
+		d $o Ghost Detective $t Our lead!

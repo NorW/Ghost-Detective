@@ -49,6 +49,16 @@ public class DialogController : MonoBehaviour
         //Loop for next chunk of dialog?
     }
 
+    public void SetActive( bool active )
+    {
+        diBack.SetActive( active );
+    }
+
+    public bool IsActive()
+    {
+        return diBack.activeSelf;
+    }
+
     public void SetDialogue( string dialogue )
     {
         dbDialog.GetComponent< TextMeshProUGUI >().text = dialogue;
