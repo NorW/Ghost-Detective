@@ -68,4 +68,12 @@ public class DialogController : MonoBehaviour
     {
         dbName.GetComponent<TextMeshProUGUI>().text = name;
     }
+
+    public void SetOptions(string option1, string option2 )
+    {
+        foText.GetComponent<TextMeshProUGUI>().text = option1;
+        soText.GetComponent<TextMeshProUGUI>().text = option2;
+        firstOption.SetActive(true);
+        secondOption.SetActive(true);
+    }
 }
