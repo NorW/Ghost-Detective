@@ -11,4 +11,29 @@ resetstreetcam
 tocafe
 	dialoguevisibility false
 	scenechange cafe 0
+	playsfx cafedooropen.mp3
 	startdialogue cafestart
+toloversapartment
+	dialoguevisibility false
+	scenechange loversapartment 0
+	startdialogue loversapartmentstart
+loversapartmentbuzzer
+	playsfx apartmentbuzzer.mp3
+	nextline
+loversapartmentopendoor
+	playsfx apartmentbuzzer.mp3
+	nextline
+badgeflash
+	playsfx badgeflash.mp3
+	startdialogue apartmentconvopart2
+doorknock
+	playsfx doorknock.mp3
+	nextline
+dooropen
+	nextline
+checkpocket
+	nextline
+backtooffice
+	dialoguevisibility false
+	scenechange office 0
+	startdialogue finale

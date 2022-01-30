@@ -139,6 +139,23 @@ public class CutscenePlayMusic : CutsceneAction
     }
 }
 
+public class CutscenePlaySFX : CutsceneAction
+{
+    private string sfx;
+    public CutscenePlaySFX(string sfxToPlay)
+    {
+        sfx = sfxToPlay;
+    }
+
+    public override bool PlayAction()
+    {
+        //TODO
+        isComplete = true;
+        throw new System.NotImplementedException();
+        return isComplete;
+    }
+}
+
 public class CutsceneStartDialogue : CutsceneAction
 {
     private string dialogue;
@@ -277,6 +294,10 @@ public class CutsceneManager : MonoBehaviour
         else if ( name == "playmusic" )
         {
             action = new CutscenePlayMusic( raw.Substring( nameEnd ).Trim() );
+        }
+        else if ( name == "playsfx" )
+        {
+            action = new CutscenePlaySFX( raw.Substring( nameEnd ).Trim() );
         }
         else if ( name == "scenechange" )
         {
