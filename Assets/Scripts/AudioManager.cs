@@ -12,6 +12,8 @@ public class AudioManager : MonoBehaviour
     private int currentTrack;
     private AudioSource source;
 
+    public GameObject inGameToggle;
+
     public Text clipTitleText;
     public Text clipTimeText;
 
@@ -26,11 +28,33 @@ public class AudioManager : MonoBehaviour
     {
         source = GetComponent<AudioSource>();
 
+        inGameToggle = GameObject.Find("Toggle Name");
+
         //Play music
         PlayMusic();
 
         
     }
+
+    public void ChangeValueToTrue()
+    {
+        inGameToggle.GetComponent<Toggle>().isOn = true;
+    }
+
+    public void ChangeValueToFalse()
+    {
+        inGameToggle.GetComponent<Toggle>().isOn = false;
+    }
+
+    public void Loop()
+    {
+        while(inGameToggle.GetComponent<Toggle>().isOn == true)
+        {
+            source.clip = musicClips[currentTrack];
+            source.Play();
+        }
+    }
+
 
     // Update is called once per frame
     void PlayMusic()
@@ -58,6 +82,7 @@ public class AudioManager : MonoBehaviour
         }
         NextTitle();
     }
+    
 
 
     public void NextTitle()
