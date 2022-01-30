@@ -8,3 +8,7 @@ pantosign
 	nextline
 resetstreetcam
 	movecamera street 1
+tocafe
+	dialoguevisibility false
+	scenechange cafe 0
+	startdialogue cafestart
