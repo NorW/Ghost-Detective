@@ -21,7 +21,10 @@ public enum DialogueTagType
     Gives,
     GOTO,
     Text,
-    Owner
+    Owner,
+    CutsceneStart,
+    CutsceneContinue,
+    VoiceLine
 }
 
 public class DialogueNode
@@ -39,6 +42,8 @@ public class DialogueNode
     //public bool or enum display portrait? or int
 
     public string cutscene = null;
+    public bool continueCutscene = false;
+    public string voiceLine = null;
 }
 
 public class DialogueSystem : MonoBehaviour
@@ -107,6 +112,7 @@ public class DialogueSystem : MonoBehaviour
                 else
                 {
                     curNode.parent = GetParentOfLevel( prevNode, curNode.nodeLevel - 1 );
+                    curNode.parent.children.Add( curNode );
                 }
             }
 
@@ -168,6 +174,10 @@ public class DialogueSystem : MonoBehaviour
             {
                 node.type = DialogueNodeType.Prompt;
             }
+            else if( type == 's' )
+            {
+                node.type = DialogueNodeType.Cutscene;
+            }
             else
             {
                 return null;
@@ -206,6 +216,15 @@ public class DialogueSystem : MonoBehaviour
                 case DialogueTagType.Text:
                     node.dialogue = GetDialogue( line, ref tagIndex );
                     return node;
+                case DialogueTagType.CutsceneStart:
+                    node.cutscene = GetName( line, ref tagIndex );
+                    break;
+                case DialogueTagType.CutsceneContinue:
+                    node.continueCutscene = true;
+                    break;
+                case DialogueTagType.VoiceLine:
+                    node.voiceLine = GetName( line, ref tagIndex );
+                    break;
             }
 
             if(tagIndex >= line.Length )
@@ -289,6 +308,12 @@ public class DialogueSystem : MonoBehaviour
                 return DialogueTagType.Text;
             case 'o':
                 return DialogueTagType.Owner;
+            case 'c':
+                return DialogueTagType.CutsceneStart;
+            case 'p':
+                return DialogueTagType.CutsceneContinue;
+            case 'v':
+                return DialogueTagType.VoiceLine;
         }
 
         return DialogueTagType.INVALID;
@@ -355,6 +380,12 @@ public class DialogueSystem : MonoBehaviour
             SetDialogueVisible( true );
         }
 
+        if( curNode.goToTarget != null )
+        {
+            StartDialogue( curNode.goToTarget );
+            return;
+        }
+
         if ( curNode.children.Count == 0 )
         {
             SetDialogueVisible( false );
@@ -395,6 +426,11 @@ public class DialogueSystem : MonoBehaviour
             case DialogueNodeType.Cutscene:
                 CutsceneManager.Instance.StartCutscene( curNode.cutscene );
                 break;
+        }
+
+        if( curNode.voiceLine != null )
+        {
+            //TODO play voice line
         }
     }
 

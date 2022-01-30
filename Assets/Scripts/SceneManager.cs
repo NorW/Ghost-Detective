@@ -5,6 +5,10 @@ using UnityEngine.Assertions;
 
 public class SceneManager : MonoBehaviour
 {
+    private static SceneManager instance = null;
+
+    public static SceneManager Instance { get { return instance; } }
+
     [SerializeField] List< Scene > scenes = new List< Scene >();
     [SerializeField] GameObject playerObject;
 
@@ -12,13 +16,17 @@ public class SceneManager : MonoBehaviour
 
     void Awake()
     {
-        foreach( Scene scene in scenes )
+        if ( instance == null )
         {
-            sceneLookup.Add( scene.SceneName, scene );
+            instance = this;
+            foreach ( Scene scene in scenes )
+            {
+                sceneLookup.Add( scene.SceneName, scene );
+            }
         }
     }
 
-    void MovePlayerToScene( string scene, int spawnPointIndex = 0 )
+    public void MovePlayerToScene( string scene, int spawnPointIndex = 0 )
     {
         Assert.IsTrue( sceneLookup.ContainsKey( scene ) );
         Vector3 position = sceneLookup[ scene ].GetSpawnPointPosition( spawnPointIndex );

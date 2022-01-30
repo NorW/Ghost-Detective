@@ -1,16 +1,42 @@
 t $o Opening
 	d $o Ghost Detective $n ??? $t ...
-		d $o Death $n ??? $t Hey Bub, I've got bad news for you. You died, and I know that because I am Death.
-			d $o Ghost Detective $n ??? $t Huh… that's unfortunate. How did it happen?
-				d $o Death $t How would I know? [Shrugs] You were alive and then you weren't. That's it.
-					d $o Ghost Detective $n ??? $t I see… so someone was at fault here. I must find them!
-						d $o Death $t What? Ugh… humans are so dramatic, even in the after life.
-							d $o Death $t Here, it sounds to me like you’re about to do something stupid. So, take this and call me when you're done.
-								d $o Ghost Detective $n ??? $t Ok, captain. I accept this badge and will honor it until I find the one responsible for my demise.
-									d $o Death $t I…, I am no captain, and that is not a badge. It's a magical rock named ‘Dwayne’ for you to summon me when you're done. 
-										d $o Ghost Detective $n ??? $t I'm sure I'll get to the bottom of this mystery because I am… GHOST DETECTIVE!
-											d $o Death $t Oh my Gods…. Whatever, see you later.
-												d $o Ghost Detective $t And so my journey begins…
+		d $o Death $n ??? $v Death_laugh_happy_02.mp3 $t Hey Bub, I've got bad news for you. You died, and I know that because well, you landed here in Limbo.
+			d $o Ghost Detective $n ??? $v GD-Huh.mp3 $t Huh… that's unfortunate. How did it happen? Who are you?
+				d $o Death $t Me, I’m DEATH. How you died? How would I know? [Shrugs] You were alive and then you weren't. That's it.
+					d $o Ghost Detective $n ??? $t I see… so someone… someone clearly murdered me. I must find them!
+						d $o Death $v Death_Get_on_with-jt.mp3 $t What? Ugh… humans are so dramatic, even in the after life.
+							d $o Ghost Detective $n ??? $t ...
+								d $o Death $v Death_Get_on_with-jt.mp3 $t Here, it sounds to me like you’re about to do something stupid. So, take this and call me when you're done.
+									d $o Ghost Detective $n ??? $t Ok, captain. I accept this badge and will honor it until I find the one responsible for my demise.
+										d $o Death $t I uh-?? I am no captain, and that is not a badge. It's a magical rock named ‘Dwayne’ for you to summon me when you're done.
+											d $o Ghost Detective $v VO-03.mp3 $t I'm sure I'll get to the bottom of this mystery because I am… GHOST DETECTIVE!
+												d $o Death $v Death-Frustration.mp3 $t Oh my Gods…. Whatever, see you later.
+													d $o Ghost Detective $t And so my journey begins…
+														s $c tostreet
 t $o scene2
-	d $o Ghost Detective $t The streets are ripe with crime, I smell it, and feel it. The city, it speaks to me and I’m its protector. Come on city, give me something!
-		d $o Ghost Detective $t Our lead!
+	d $o Ghost Detective $v VO-03.mp3 $t The streets are ripe with crime, I smell it, and feel it. The city, it speaks to me and I’m its protector. Come on city, give me something!
+		s $c pantosign
+			d $o Ghost Detective $t Our lead!
+				s $c resetstreetcam
+t $o Stoner Ghost
+	d $o Stoner Ghost $r stoner first convo $t Whats up dude
+	d $o Stoner Ghost $v High-Whoa-Dude.mp3 $t What’s the rush there big guy, who died?
+		d $o Ghost Detective $t That’s extremely insensitive at a time like this.
+			d $o Stoner Ghost $t Whoa, sorry bro. What’s got you so worked up?
+				c $o Ghost Detective $t I’m here to solve a murder… of my own demise.
+					d $o Stoner Ghost $s sg branch 1 $t Whoa, that's crazy! What happened?
+				c $o Ghost Detective $t I’m here to catch a culprit.
+					d $o Stoner Ghost $s sg branch 1 $t Damn, I swear it wasn't me… wait, do you want my help?
+t $o sg branch 1
+	c $o Ghost Detective $t My mind is clouded by the injustice, as I am not sure.
+		d $o Stoner Ghost $s sg convo 1 end $t Wow… you got no chill, but I hear you. Can I help?
+	c $o Ghost Detective $t You tell me, I’m looking for clues.
+		d $o Stoner Ghost $s sg convo 1 end $t Damn, I swear it wasn't me… wait, do you want my help?
+t $o sg convo 1 end
+	d $o Ghost Detective $t Yes, you can help… by getting out of my way.
+		d $o Ghost Detective $v GD-Woah.mp3 $t I'm sorry, that was unnecessarily rude. Being dead is harder than I anticipated.
+			d $o Stoner Ghost $v High-Ghost-Quip.mp3 $t Yo… that's deep. I thought life was hard until I died. Good luck on your journey.
+				d $o Stoner Ghost $g stoner first convo $t Like my mama used to say, "The city is your oyster". I bet you can find something around here…
+t $o cup
+t $o Barry, The Barista
+t $o Les

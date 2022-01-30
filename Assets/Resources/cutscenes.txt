@@ -1,0 +1,10 @@
+tostreet
+	dialoguevisibility false
+	scenechange street 0
+	startdialogue scene2
+pantosign
+	dialoguevisibility false
+	movecamera sign 1
+	nextline
+resetstreetcam
+	movecamera street 1
