@@ -613,7 +613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodeName: cafe
-  size: 5.933186
+  size: 5.57689
 --- !u!4 &408064822
 Transform:
   m_ObjectHideFlags: 0
@@ -1950,7 +1950,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodeName: loversapartment
-  size: 5.902567
+  size: 5.57689
 --- !u!4 &1270720039
 Transform:
   m_ObjectHideFlags: 0
@@ -2560,7 +2560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodeName: street
-  size: 12.68946
+  size: 12.76238
 --- !u!4 &1594423742
 Transform:
   m_ObjectHideFlags: 0
