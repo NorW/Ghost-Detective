@@ -417,6 +417,7 @@ public class DialogueSystem : MonoBehaviour
         {
             case DialogueNodeType.Choice:
                 dialogueDisplay.SetName( curNode.alias != null ? curNode.alias : curNode.owner );
+                dialogueDisplay.SetIcon(curNode.owner);
                 dialogueDisplay.SetOptions( curNode.parent.children[ 0 ].dialogue, curNode.parent.children[ 1 ].dialogue );
                 break;
 
