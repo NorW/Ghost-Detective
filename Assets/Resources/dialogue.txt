@@ -38,11 +38,12 @@ t $o sg convo 1 end
 			d $o Stoner Ghost $v High-Ghost-Quip.mp3 $t Yo… that's deep. I thought life was hard until I died. Good luck on your journey.
 				d $o Stoner Ghost $g stoner first convo $t Like my mama used to say, "The city is your oyster". I bet you can find something around here…
 t $o cup
-	d $o Ghost Detective $v GD-Quip-2.mp3 $t Aha, I found this - a cup from Bone Apple Tea.
+	d $o Ghost Detective $r stoner first convo $v GD-Quip-2.mp3 $t Aha, I found this - a cup from Bone Apple Tea.
 		d $o Stoner Ghost $t Oh hey, my friend Barry works there. They could probably help!
 			d $o Ghost Detective $v VO-03.mp3 $t This case is brewing to be the perfect blend of mystery and suspense. Thank you, friend.
 				d $o Stoner Ghost $v High-Ghost-General.mp3 $t Yo man, no problem.
 					s $c tocafe
+	d $o Ghost Detective $t litter...
 t $o cafestart
 	d $o Barry, The Barista $v Barry-Quip-Intro.mp3 $t HELLO AND WELCOME TO BONE APPLE TEA, HOME OF THE RISE & GRIND! WHAT CAN I GET YOU?
 		d $o Ghost Detective $t I get a deep sense of justice from you… Barry.
