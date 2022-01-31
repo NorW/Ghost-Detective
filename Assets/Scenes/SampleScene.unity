@@ -155,8 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d9e51d1ec56cf447962be37547b4c83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  open: {fileID: 21300000, guid: 224f2e3e72704bd4d96cd771b0d66e91, type: 3}
-  closed: {fileID: 21300000, guid: 224f2e3e72704bd4d96cd771b0d66e91, type: 3}
+  open: {fileID: 21300000, guid: b863b4402a1ca1945b3805cfa43d2d5b, type: 3}
+  closed: {fileID: 21300000, guid: b863b4402a1ca1945b3805cfa43d2d5b, type: 3}
   dialogueName: Stoner Ghost
 --- !u!61 &189465736
 BoxCollider2D:
@@ -224,7 +224,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 224f2e3e72704bd4d96cd771b0d66e91, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b863b4402a1ca1945b3805cfa43d2d5b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -232,7 +232,7 @@ SpriteRenderer:
   m_Size: {x: 3.17, y: 3.52}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &189465738
