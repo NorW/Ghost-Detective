@@ -134,7 +134,6 @@ public class CutscenePlayMusic : CutsceneAction
     public override bool PlayAction()
     {
         //TODO
-        throw new System.NotImplementedException();
         return isComplete;
     }
 }
@@ -151,7 +150,6 @@ public class CutscenePlaySFX : CutsceneAction
     {
         //TODO
         isComplete = true;
-        throw new System.NotImplementedException();
         return isComplete;
     }
 }
