@@ -16,6 +16,12 @@ public class DialogController : MonoBehaviour
     public GameObject secondOption; //Option Button #2
     public GameObject soText; //The text that goes on the second option button. Maybe I'm going a bit overboard with these comments
     public GameObject pressButton; //Not sure if dialog will be progessing automatically or if youll have to hit a button so for now I have text that cones up
+    
+    public Sprite barDefault;
+    public Sprite highDefault;
+    public Sprite dDefault;
+    public Sprite lovDefault;
+
 
     void Start()
     {
@@ -77,9 +83,60 @@ public class DialogController : MonoBehaviour
         secondOption.SetActive(true);
     }
 
+
     public void HideOptions()
     {
         firstOption.SetActive( false );
         secondOption.SetActive( false );
     }
+
+    public void SetIcon(string character)
+    {
+        if (character == "Ghost Detective")
+        {
+            nonGDIcon.GetComponent<Image>().color = new Color32(56, 56, 56, 255);
+            GDIcon.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+            nonGDIcon.SetActive(true);
+            GDIcon.SetActive(true);
+        }
+        else if (character == "Death")
+        {
+            nonGDIcon.GetComponent<Image>().sprite = dDefault;
+            GDIcon.GetComponent<Image>().color = new Color32(56, 56, 56, 255);
+            nonGDIcon.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+            nonGDIcon.SetActive(true);
+            GDIcon.SetActive(true);
+        }
+        else if (character == "Les")
+        {
+            nonGDIcon.GetComponent<Image>().sprite = lovDefault;
+            GDIcon.GetComponent<Image>().color = new Color32(56, 56, 56, 255);
+            nonGDIcon.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+            nonGDIcon.SetActive(true);
+            GDIcon.SetActive(true);
+        }
+        else if (character == "Barry, The Barista")
+        {
+            nonGDIcon.GetComponent<Image>().sprite = barDefault;
+            GDIcon.GetComponent<Image>().color = new Color32(56, 56, 56, 255);
+            nonGDIcon.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+            nonGDIcon.SetActive(true);
+            GDIcon.SetActive(true);
+        }
+        else if (character == "Les")
+        {
+            nonGDIcon.GetComponent<Image>().sprite = highDefault;
+            GDIcon.GetComponent<Image>().color = new Color32(56, 56, 56, 255);
+            nonGDIcon.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+            nonGDIcon.SetActive(true);
+            GDIcon.SetActive(true);
+        }
+        else
+        {
+            GDIcon.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+            nonGDIcon.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
+        }
+        
+    }
+    
 }

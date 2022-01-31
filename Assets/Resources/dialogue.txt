@@ -50,7 +50,7 @@ t $o cafestart
 				d $o Ghost Detective $t Do you recognize this cup?
 					d $o Barry, The Barista $t Hmm, let me inspect this, will you give me a moment?
 t $o barry trigger
-	d $o Barry, The Barista $v Barry-Quuip-Panic.mp3 $t Yeah…uh, I recognize this cup! I brewed it this morning!
+	d $o Barry, The Barista $g barry trigger $v Barry-Quuip-Panic.mp3 $t Yeah…uh, I recognize this cup! I brewed it this morning!
 		c $o Ghost Detective $v GD-Huh.mp3 $t Can you describe what the customer looked like?
 			d $o Barry, The Barista $s cafe branch 2 $t Well, they’re super tall, built like a truck and not someone I would want to mess with.
 		c $o Ghost Detective $t Alright, who should I be on the lookout for?
@@ -69,7 +69,7 @@ t $o cafe convo end
 						d $o Ghost Detective $v VO-03.mp3 $t ME!
 							d $o Barry, The Barista $v Barry-Quuip-Panic.mp3 $t Whoa, whoa there buddy. I can’t let you going out there dressed like that. Find a proper uniform and we’ll talk. I may be dead, but we have standards.
 t $o disguise found
-	d $o Ghost Detective $t Alright, how do I look?
+	d $o Ghost Detective $r barry trigger $t Alright, how do I look?
 		d $o Barry, The Barista $v Barry-Dialogue-General.mp3 $t You look the same, whatever, here. Go and solve whatever it is you’re doing.
 			s $c toloversapartment
 t $o loversapartmentstart
@@ -164,3 +164,6 @@ t $o apartmentconvopart2
 t $o Barry, The Barista
 	d $o Barry, The Barista $t ...
 t $o Les
+t $o Death
+	d $o Death $r opening $t Can't you see I'm busy
+	d $o Death $s Opening $g opening $t ...
