@@ -20,7 +20,7 @@ t $o scene2
 				s $c resetstreetcam
 t $o Stoner Ghost
 	d $o Stoner Ghost $r stoner first convo $t Whats up dude
-	d $o Stoner Ghost $v High-Whoa-Dude.mp3 $t What’s the rush there big guy, who died?
+	d $o Stoner Ghost $g stoner first convo $v High-Whoa-Dude.mp3 $t What’s the rush there big guy, who died?
 		d $o Ghost Detective $t That’s extremely insensitive at a time like this.
 			d $o Stoner Ghost $t Whoa, sorry bro. What’s got you so worked up?
 				c $o Ghost Detective $t I’m here to solve a murder… of my own demise.

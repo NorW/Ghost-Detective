@@ -378,6 +378,7 @@ public class DialogueSystem : MonoBehaviour
         {
             curNode = curNode.parent.children[ choice ];
             SetDialogueVisible( true );
+            dialogueDisplay.HideOptions();
         }
 
         if( curNode.goToTarget != null )
@@ -409,10 +410,15 @@ public class DialogueSystem : MonoBehaviour
             SetDialogueVisible( false );
             return;
         }
+
+        player.AddTags( curNode.tagsGiven );
     
         switch( curNode.type )
         {
             case DialogueNodeType.Choice:
+                dialogueDisplay.SetName( curNode.alias != null ? curNode.alias : curNode.owner );
+                dialogueDisplay.SetIcon(curNode.owner);
+                dialogueDisplay.SetOptions( curNode.parent.children[ 0 ].dialogue, curNode.parent.children[ 1 ].dialogue );
                 break;
 
             case DialogueNodeType.Prompt:
@@ -420,6 +426,7 @@ public class DialogueSystem : MonoBehaviour
 
             case DialogueNodeType.Dialogue:
                 dialogueDisplay.SetName( curNode.alias != null ? curNode.alias : curNode.owner );
+                dialogueDisplay.SetIcon(curNode.owner);
                 dialogueDisplay.SetDialogue( curNode.dialogue );
                 break;
 

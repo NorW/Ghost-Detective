@@ -12,6 +12,8 @@ public class Openable : Interactable
     private SpriteRenderer sr;
     private bool isOpen;
 
+    [SerializeField] string dialogueName;
+
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -30,6 +32,8 @@ public class Openable : Interactable
         }
 
         isOpen = !isOpen;
+
+        DialogueSystem.Instance.StartDialogue( dialogueName );
     }
 
 
