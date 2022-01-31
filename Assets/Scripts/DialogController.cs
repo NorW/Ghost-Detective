@@ -94,7 +94,7 @@ public class DialogController : MonoBehaviour
     {
         if (character == "Ghost Detective")
         {
-            nonGDIcon.GetComponent<Image>().color = new Color32(56, 56, 56, 156);
+            nonGDIcon.GetComponent<Image>().color = new Color32(56, 56, 56, 255);
             GDIcon.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
             nonGDIcon.SetActive(true);
             GDIcon.SetActive(true);
@@ -102,7 +102,7 @@ public class DialogController : MonoBehaviour
         else if (character == "Death")
         {
             nonGDIcon.GetComponent<Image>().sprite = dDefault;
-            GDIcon.GetComponent<Image>().color = new Color32(56, 56, 56, 156);
+            GDIcon.GetComponent<Image>().color = new Color32(56, 56, 56, 255);
             nonGDIcon.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
             nonGDIcon.SetActive(true);
             GDIcon.SetActive(true);
@@ -110,7 +110,7 @@ public class DialogController : MonoBehaviour
         else if (character == "Les")
         {
             nonGDIcon.GetComponent<Image>().sprite = lovDefault;
-            GDIcon.GetComponent<Image>().color = new Color32(56, 56, 56, 156);
+            GDIcon.GetComponent<Image>().color = new Color32(56, 56, 56, 255);
             nonGDIcon.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
             nonGDIcon.SetActive(true);
             GDIcon.SetActive(true);
@@ -118,7 +118,7 @@ public class DialogController : MonoBehaviour
         else if (character == "Barry, The Barista")
         {
             nonGDIcon.GetComponent<Image>().sprite = barDefault;
-            GDIcon.GetComponent<Image>().color = new Color32(56, 56, 56, 156);
+            GDIcon.GetComponent<Image>().color = new Color32(56, 56, 56, 255);
             nonGDIcon.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
             nonGDIcon.SetActive(true);
             GDIcon.SetActive(true);
@@ -126,15 +126,15 @@ public class DialogController : MonoBehaviour
         else if (character == "Les")
         {
             nonGDIcon.GetComponent<Image>().sprite = highDefault;
-            GDIcon.GetComponent<Image>().color = new Color32(56, 56, 56, 156);
+            GDIcon.GetComponent<Image>().color = new Color32(56, 56, 56, 255);
             nonGDIcon.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
             nonGDIcon.SetActive(true);
             GDIcon.SetActive(true);
         }
         else
         {
-            nonGDIcon.SetActive(false);
-            GDIcon.SetActive(false);
+            GDIcon.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+            nonGDIcon.GetComponent<Image>().color = new Color32(255, 255, 255, 0);
         }
         
     }

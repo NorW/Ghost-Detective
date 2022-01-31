@@ -232,7 +232,7 @@ SpriteRenderer:
   m_Size: {x: 3.17, y: 3.52}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &189465738
@@ -1036,6 +1036,10 @@ MonoBehaviour:
   secondOption: {fileID: 543939930}
   soText: {fileID: 2057431775}
   pressButton: {fileID: 846264613}
+  barDefault: {fileID: 21300000, guid: 5a324b8da2297494aaf843749df91e9c, type: 3}
+  highDefault: {fileID: 21300000, guid: b863b4402a1ca1945b3805cfa43d2d5b, type: 3}
+  dDefault: {fileID: 21300000, guid: 9ae7b10e11496c94bb4bb4614e6a8f37, type: 3}
+  lovDefault: {fileID: 21300000, guid: c850a209938ba6345b2ef5f4c63125d0, type: 3}
 --- !u!1 &543939930
 GameObject:
   m_ObjectHideFlags: 0
@@ -1896,7 +1900,7 @@ SpriteRenderer:
   m_Size: {x: 2.92, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &958651656

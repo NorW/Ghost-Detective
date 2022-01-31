@@ -426,6 +426,7 @@ public class DialogueSystem : MonoBehaviour
 
             case DialogueNodeType.Dialogue:
                 dialogueDisplay.SetName( curNode.alias != null ? curNode.alias : curNode.owner );
+                dialogueDisplay.SetIcon(curNode.owner);
                 dialogueDisplay.SetDialogue( curNode.dialogue );
                 break;
 
