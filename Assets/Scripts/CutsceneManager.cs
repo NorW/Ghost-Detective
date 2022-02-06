@@ -148,7 +148,7 @@ public class CutscenePlaySFX : CutsceneAction
 
     public override bool PlayAction()
     {
-        //TODO
+        FXManager.Instance.playbyname( sfx );
         isComplete = true;
         return isComplete;
     }
@@ -181,7 +181,6 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField] TextAsset cutsceneData;
     [SerializeField] SceneManager sceneManager;
     [SerializeField] List<CutsceneNode> cutsceneNodes;
-
 
 
     private Vector3 cameraOriginalPosition;
