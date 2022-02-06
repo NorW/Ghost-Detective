@@ -8,25 +8,37 @@ using UnityEngine.Audio;
 [RequireComponent(typeof(AudioSource))]
 public class FXManager : MonoBehaviour
 {
+    private static FXManager instance = null;
+    public static FXManager Instance { get { return instance; } }
 
     public AudioClip [] clips;
     public Dictionary<string, AudioClip> Clips;
 
     void Awake()
     {
-        Clips = new Dictionary<string, AudioClip>();
-
-        foreach (AudioClip clip in clips)
+        if ( instance == null )
         {
-            Clips.Add(clip.ToString(), clip);
-            Debug.Log(clip.ToString());
-        }
+            instance = this;
+            Clips = new Dictionary<string, AudioClip>();
 
+            foreach ( AudioClip clip in clips )
+            {
+                Clips.Add( clip.name, clip );
+                Debug.Log( clip.name );
+            }
+        }
 
     }
     public void playbyname(string clipname)
     {
-        gameObject.GetComponent<AudioSource>().PlayOneShot(Clips[clipname]);
-
+        if ( Clips.ContainsKey( clipname ) )
+        {
+            gameObject.GetComponent<AudioSource>().PlayOneShot( Clips[ clipname ] );
+            Debug.Log( "Playing SFX: " + clipname );
+        }
+        else
+        {
+            Debug.Log( "Unable to find SFX: " + clipname );
+        }
     }
 }

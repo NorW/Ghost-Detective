@@ -53,7 +53,7 @@ public class DialogueSystem : MonoBehaviour
     public static DialogueSystem Instance { get { return instance; } }
 
     [ SerializeField ] TextAsset dialogue;
-    [ SerializeField] DialogController dialogueDisplay;
+    [ SerializeField ] DialogController dialogueDisplay;
 
     private Dictionary<string, DialogueNode> dialogueTrees = null;
 
@@ -345,20 +345,6 @@ public class DialogueSystem : MonoBehaviour
         }
     }
 
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void StartDialogue( string conversationTarget )
     {
         curNode = dialogueTrees[ conversationTarget ];
@@ -437,7 +423,7 @@ public class DialogueSystem : MonoBehaviour
 
         if( curNode.voiceLine != null )
         {
-            //TODO play voice line
+            FXManager.Instance.playbyname( curNode.voiceLine );
         }
     }
 
