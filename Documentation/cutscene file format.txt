@@ -1,0 +1,22 @@
+cutscenes
+
+name
+	<action name> <parameters delimited by ,>
+	
+valid action names:
+
+scenechange <scene name>, <spawn point index>
+
+movecamera <node name>, <time to move camera in seconds>
+
+nextline
+
+dialoguevisibility <true/literally any other text for false>
+
+playmusic <music file name>
+
+playsfx <sfx file name>
+
+startdialogue <dialogue tree top level interactable name>
+
+

@@ -1,0 +1,163 @@
+t $o Death
+	d $o Ghost Detective $n ??? $t ...
+		d $o Death $n ??? $v Death_laugh_happy_02.mp3 $t Hey Bub, I've got bad news for you. You died, and I know that because well, you landed here in Limbo.
+			d $o Ghost Detective $n ??? $v GD-Huh.mp3 $t Huh… that's unfortunate. How did it happen? Who are you?
+				d $o Death $t Me, I’m DEATH. How you died? How would I know? [Shrugs] You were alive and then you weren't. That's it.
+					d $o Ghost Detective $n ??? $t I see… so someone… someone clearly murdered me. I must find them!
+						d $o Death $v Death_Get_on_with-jt.mp3 $t What? Ugh… humans are so dramatic, even in the after life.
+							d $o Ghost Detective $n ??? $t ...
+								d $o Death $v Death_Get_on_with-jt.mp3 $t Here, it sounds to me like you’re about to do something stupid. So, take this and call me when you're done.
+									d $o Ghost Detective $n ??? $t Ok, captain. I accept this badge and will honor it until I find the one responsible for my demise.
+										d $o Death $t I uh-?? I am no captain, and that is not a badge. It's a magical rock named ‘Dwayne’ for you to summon me when you're done.
+											d $o Ghost Detective $v VO-03.mp3 $t I'm sure I'll get to the bottom of this mystery because I am… GHOST DETECTIVE!
+												d $o Death $v Death-Frustration.mp3 $t Oh my Gods…. Whatever, see you later.
+													d $o Ghost Detective $t And so my journey begins…
+														s $c tostreet
+t $o scene2
+	d $o Ghost Detective $v VO-03.mp3 $t The streets are ripe with crime, I smell it, and feel it. The city, it speaks to me and I’m its protector. Come on city, give me something!
+		s $c pantosign
+			d $o Ghost Detective $t Our lead!
+				s $c resetstreetcam
+t $o Stoner Ghost
+	d $o Stoner Ghost $g stoner first convo $v High-Whoa-Dude.mp3 $t Whoa, what’s the rush there big guy, who died?
+		d $o Ghost Detective $t That’s extremely insensitive at a time like this.
+			d $o Stoner Ghost $t Whoa, sorry bro. What’s got you so worked up?
+				c $o Ghost Detective $t I’m here to solve a murder… of my own demise.
+					d $o Stoner Ghost $s sg branch 1 $t Whoa, that's crazy! What happened?
+				c $o Ghost Detective $t I’m here to catch a culprit.
+					d $o Stoner Ghost $s sg branch 1 $t Damn, I swear it wasn't me… wait, do you want my help?
+t $o sg branch 1
+	c $o Ghost Detective $t My mind is clouded by the injustice, as I am not sure.
+		d $o Stoner Ghost $s sg convo 1 end $t Wow… you got no chill, but I hear you. Can I help?
+	c $o Ghost Detective $t You tell me, I’m looking for clues.
+		d $o Stoner Ghost $s sg convo 1 end $t Damn, I swear it wasn't me… wait, do you want my help?
+t $o sg convo 1 end
+	d $o Ghost Detective $t Yes, you can help… by getting out of my way.
+		d $o Stoner Ghost $g stoner first convo $t Like my mama used to say, "The city is your oyster". I bet you can find something around here…
+t $o cup
+	d $o Ghost Detective $v GD-Quip-2.mp3 $t Aha, I found this - a cup from Bone Apple Tea.
+		d $o Stoner Ghost $t Oh hey, my friend Barry works there. They could probably help!
+			d $o Ghost Detective $v VO-03.mp3 $t This case is brewing to be the perfect blend of mystery and suspense. Thank you, friend.
+				d $o Stoner Ghost $v High-Ghost-General.mp3 $t Yo man, no problem.
+					s $c tocafe
+t $o cafestart
+	d $o Barry, The Barista $v Barry-Quip-Intro.mp3 $t HELLO AND WELCOME TO BONE APPLE TEA, HOME OF THE RISE & GRIND! WHAT CAN I GET YOU?
+		d $o Ghost Detective $t I get a deep sense of justice from you… Barry.
+			d $o Barry, The Barista $t Thank you sir.
+				d $o Ghost Detective $t Do you recognize this cup?
+					d $o Barry, The Barista $t Hmm, let me inspect this, will you give me a moment?
+t $o barry trigger
+	d $o Barry, The Barista $v Barry-Quuip-Panic.mp3 $t Yeah…uh, I recognize this cup! I brewed it this morning!
+		c $o Ghost Detective $v GD-Huh.mp3 $t Can you describe what the customer looked like?
+			d $o Barry, The Barista $s cafe branch 2 $t Well, they’re super tall, built like a truck and not someone I would want to mess with.
+		c $o Ghost Detective $t Alright, who should I be on the lookout for?
+			d $o Barry, The Barista $s cafe branch 2  $t They were big, beefy, and I’m pretty sure could rip me in half.
+t $o cafe branch 2
+	c $o Ghost Detective $t That sounds dangerous, and I live for danger.
+		d $o Barry, The Barista $s cafe convo end $t You’ve got that right.
+	c $o Ghost Detective $t That sounds hot, in a threatening way.
+		d $o Barry, The Barista $s cafe convo end $t  Indeed.
+t $o cafe convo end
+	d $o Ghost Detective $v GD-Quip-2.mp3 $t I also found this tie clip, do you recognize it?
+		d $o Barry, The Barista $t Oh yeah - that’s totally theirs!
+			d $o Ghost Detective $t If only I knew where to find them!
+				d $o Barry, The Barista $v Barry-Dialogue-General.mp3 $t Well, you’re not going to believe this! They just put in a CrashCup Order for delivery.
+					d $o Ghost Detective $t Well then, that sounds like a job for….
+						d $o Ghost Detective $v VO-03.mp3 $t ME!
+							d $o Barry, The Barista $v Barry-Quuip-Panic.mp3 $t Whoa, whoa there buddy. I can’t let you going out there dressed like that. Find a proper uniform and we’ll talk. I may be dead, but we have standards.
+t $o disguise found
+	d $o Ghost Detective $t Alright, how do I look?
+		d $o Barry, The Barista $v Barry-Dialogue-General.mp3 $t You look the same, whatever, here. Go and solve whatever it is you’re doing.
+			s $c toloversapartment
+t $o loversapartmentstart
+	d $o Ghost Detective $t Well, this is the place, I’m at the end of my journey.
+		s $c loversapartmentbuzzer
+			d $o Les $v Merci-Les-General.mp3 $t You’ve reached Les, who is this?
+				d $o Ghost Detective $t Yeah, it’s me, the person you’ve been expecting.
+					d $o Les $t OH, hey - you’re here early! Come on up.
+						s $c loversapartmentopendoor
+							d $o Ghost Detective $v GD-Whoah.mp3 $t Hello Mr…
+								d $o Les $v Mercil-Hmmm.mp3 $t	It’s Les, and you’re dressed kinda funny for this?
+									d $o Ghost Detective $t Oh, don’t mind the get up. It helps me focus on the job
+										d $o Les $t	Sure, alright. Can I get you a drink? I have a coffee coming myself.
+											d $o Ghost Detective $t Oh, I caught the driver on the way up - this must be yours?
+												d $o Les $t	Wow, thanks for that. So, where do we get started?
+													d $o Ghost Detective $t I just have some questions for you. You know, just so I know who I’m working with here.
+														d $o Les $t	That should be fine, shoot!
+															d $o Ghost Detective $t How old are you?
+																d $o Les $t Uh, 27?
+																	d $o Ghost Detective $t What is it that you do for work?
+																		d $o Les $t Oh - we’re getting right into it, okay. Sorry can we go from the top?
+																			d $o Ghost Detective $t Sure… no problem. How old are you?
+																				d $o Les $t 35
+																					d $o Ghost Detective $t You’re 35?
+																						d $o Les $t Yes.
+																							d $o Ghost Detective $t What is it that you do for work?
+																								d $o Les $t Contract work.
+																									d $o Ghost Detective $t What is your name?
+																										d $o Les $n Mercil Les. $t Mercil Les.
+																											d $o Ghost Detective $t But you just said it was Les?
+																												d $o Les $n Mercil Les. $t No, my name is Mercil Les.
+																													d $o Ghost Detective $t Are you sure about that? I have different information.
+																														d $o Les $n Mercil Les. $t Oh yeah, from who? Who’s talking?
+																															d $o Ghost Detective $t Why so aggressive? I’m just asking simple questions here.
+																																d $o Les $n Mercil Les. $t Yeah, okay.
+																																	d $o Ghost Detective $t You mind if we get back on track here?
+																																		d $o Les $n Mercil Les. $t Oh, yeah absolutely, sorry I get carried away sometimes.
+																																			d $o Ghost Detective $t Alright, so you’re a contractor, what do you contract?
+																																				d $o Les $n Mercil Les. $t Are you sure you really want that answer?
+																																					d $o Ghost Detective $t Just answer the question, pal. What do you do?
+																																						d $o Les $n Mercil Les. $t People call me for a ‘job’ and I do it.
+																																							d $o Ghost Detective $t Who are these people that call you?
+																																								d $o Les $n Mercil Les. $t Sorry, client confidentiality, I can’t say.
+																																									d $o Ghost Detective $t Oh, playing a tough guy now eh? I’ll break you.
+																																										d $o Les $n Mercil Les. $t Hey, that’s kinda off your lines. Are you okay?
+																																											d $o Ghost Detective $t I’ll ask the questions here, I’ve got a case to solve and you’re my prime suspect.
+																																												d $o Les $n Mercil Les. $t Whoa, okay, how can we - wait, what?
+																																													d $o Ghost Detective $t That’s right, I’m a Detective. Here’s my badge.
+																																														s $c badgeflash
+t $o apartmentconvopart2
+	d $o Les $t Oh god - there must be a mistake you see, I’m no killer.
+		d $o Ghost Detective $t I never said anything about a murder.
+			d $o Les $t Wait, what, I can explain, you see I -
+				d $o Ghost Detective $t Ah, that’s enough.
+					d $o Ghost Detective $t Can you explain to me where you were on the night of the 28th?
+						d $o Les $t Oh god, I’m so nervous now - can I get a drink?
+							d $o Ghost Detective $t No.
+								d $o Les $t ….
+									d $o Ghost Detective $t Okay, yes.
+										d $o Les $t Okay, so I was doing what I always do on a lonely Friday night. I was looking to the stars wondering if there was anyone looking back you know? Moving to a new big city, all alone and no one there to support you… it takes a toll, you know?
+											d $o Ghost Detective $t Go on.
+												d $o Les $t I was just dreaming, really, thinking about what I could do in this new city. What I could be, who I could become. With this new job, I could finally chase my dream.
+													d $o Ghost Detective $t What is it? What do you want to do?
+														d $o Les $t I want to act! I want to tell stories!
+															d $o Ghost Detective $t Les, I believe in you, I think you could do it. You had me convinced at the door that you were the person who…
+																d $o Les $t … Who?
+																	d $o Ghost Detective $t Never mind that, Les. That’s… a beautiful dream.
+																		d $o Les $t You really think so?
+																			d $o Ghost Detective $t I do.
+																				d $o Ghost Detective $t Well, you know - uh, I should get going actually I’ve got to solve this case.
+																					d $o Les $t You don’t have to go. You could stay.
+																						d $o Ghost Detective $t … What?
+																							d $o Les $t Admitedly, you’re the first person to get to know me here. I’d love for you to stay. I feel there’s something special between us.
+																								d $o Ghost Detective $t I… I feel the same. But you see… I’ve got to tell you something
+																									d $o Les $t What is it?
+																										d $o Ghost Detective $t … I’m dead.
+																											d $o Les $t OH! Thank god! I thought I was just seeing a ghost - I’m glad you actually ARE one!
+																												d $o Ghost Detective $t Wait, you knew I was a ghost?
+																													d $o Les $t Well… yes. You have no legs, and you’re wearing a bed sheet.
+																														d $o Ghost Detective $t Oh.
+																															s $c doorknock
+																																d $o Les $t Who could that be?
+																																	s $c dooropen
+																																		d $o Death $t THERE YOU ARE. I’VE BEEN LOOKING FOR YOU, GHOST DETECTIVE! Wait… who the hell is this?! Oh no wait… did you find them? Did you really find them??.............. WHERE IS DWYANE?
+																																			d $o Ghost Detective $t Well, you see -
+																																				d $o Death $t NEVER MIND THAT! DO YOU STILL HAVE MY PHONE STONE?
+																																					d $o Ghost Detective $t You mean my badge?
+																																						d $o Death $t No, not that, that’s a useless stone. Your other pocket!
+																																							s $c checkpocket
+																																								d $o Death $t YEAH. THAT'S THE ONE. Thank Gods, I thought you lost it! Alright enough of this, let’s go to my office and sort you out.
+																																									s $c backtooffice
+t $o Barry, The Barista
+	d $o Barry, The Barista $t ...
+t $o Les

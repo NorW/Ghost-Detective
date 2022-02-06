@@ -1,0 +1,57 @@
+top level nodes are dialogue trees for a single character/object
+condition checks for same level node resolving top to bottom
+
+nodetype nodeowner/speaker other tags
+
+valid node types
+
+t = top level
+d = dialogue
+c = choice
+p = prompt 	only used with choice, should only have one prompt per choice list
+s = play cutscene and continue down dialogue tree after
+
+node level is based on tabs
+
+valid tags
+$o owner
+$n name to display (if different from nodeowner/speaker)
+$r required tag(s), deliminated by ,
+$g gives tag(s), delimited by ,
+$s goes to top level node specified by nodeowner/speaker
+$t text to display TEXT SHOULD ALWAYS BE THE LAST TAG
+
+$c cutscene tag, specifies which cutscene to play
+$p story beat for cutscene, hides dialogue box to tell cutscene to move to next action
+
+example
+
+t $o Death
+	d $o Death $r got_badge $text get out, I'm busy
+
+t $o DeathOfficeDoor $n Door
+	d $o DeathOfficeDoor $t a door
+		c $o Bob $t knock on door
+			d $o DeathOfficeDoor $t noone answers
+		c $o Bob $t punch door
+			d $o DeathOfficeDoor $t your hand hurts
+		c $o Bob $t explode door
+			d $o DeathOfficeDoor $s  $t the door explodes
+
+
+
+
+TBD
+
+remap everything to full words instead of just single letters for readibility
+
+$n changes
+	if used at top level, overrides all by default
+		override order
+			node $n specified -> global $n -> nodeowner
+
+tags
+$h marks child choices as dialogue hub
+$b lets dialogue progress back to last hub. specify a number after to specify how many levels up to go
+$f fades out choice when specified tag(s) are in player
+
