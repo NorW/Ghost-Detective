@@ -16,21 +16,30 @@ public class InventoryPrototypeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        InventoryViewBase nextPrototype = null;
+
         if( Input.GetKeyDown( KeyCode.Alpha1 ) )
         {
-
+            nextPrototype = prototype1;
         }
         else if( Input.GetKeyDown( KeyCode.Alpha2 ) )
         {
-
+            nextPrototype = prototype2;
         }
         else if( Input.GetKeyDown( KeyCode.Alpha3 ) )
         {
-
+            nextPrototype = prototype3;
         }
         else if( Input.GetKeyDown( KeyCode.Alpha4 ) )
         {
+            nextPrototype = prototype4;
+        }
 
+        if( nextPrototype != null && nextPrototype != currentPrototype )
+        {
+            currentPrototype.Deactivate();
+            currentPrototype = nextPrototype;
+            currentPrototype.Activate();
         }
     }
 }

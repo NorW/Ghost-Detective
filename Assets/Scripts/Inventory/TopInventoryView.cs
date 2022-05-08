@@ -15,4 +15,9 @@ public class TopInventoryView : InventoryViewBase
     {
         
     }
+
+    public override void ToggleOpen()
+    {
+        //Do nothing, this is a static display
+    }
 }

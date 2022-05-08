@@ -130,14 +130,14 @@ public class AudioManager : MonoBehaviour
 
     public void ShowCurrentTitle()
     {
-        clipTitleText.text = source.clip.name;
-        fullLength = (int)source.clip.length;
+        //clipTitleText.text = source.clip.name;
+        //fullLength = ( int )source.clip.length;
     }
 
     public void ShowPlayTime()
     {
-        seconds = playTime % 60;
-        minutes = (playTime / 60) % 60;
-        clipTimeText.text = minutes + ":" + seconds.ToString("D2") + "/" + ((fullLength/60) % 60) + ":"  + (fullLength % 60).ToString("D2");
+        //seconds = playTime % 60;
+        //minutes = (playTime / 60) % 60;
+        //clipTimeText.text = minutes + ":" + seconds.ToString("D2") + "/" + ((fullLength/60) % 60) + ":"  + (fullLength % 60).ToString("D2");
     }
 }
