@@ -7,7 +7,7 @@ public class DropdownInventoryView : InventoryViewBase
 {
     [SerializeField] float openYPosition, closedYPosition;
 
-    Vector3 openPosition, closedPosition;
+    Vector2 openPosition, closedPosition;
 
     RectTransform rectTransform = null;
     // Start is called before the first frame update
@@ -29,7 +29,7 @@ public class DropdownInventoryView : InventoryViewBase
         {
             return;
         }
-
+        
         currentAnimationTime += Time.deltaTime;
 
         if( viewState == InventoryViewState.Closing )
@@ -41,7 +41,7 @@ public class DropdownInventoryView : InventoryViewBase
             }
             else
             {
-                rectTransform.anchoredPosition = Vector3.Lerp( rectTransform.anchoredPosition, closedPosition, Mathf.Max( closeAnimationTime - currentAnimationTime, 0.2f ) / 60.0f );
+                rectTransform.anchoredPosition = Vector2.Lerp( rectTransform.anchoredPosition, closedPosition, closeAnimationTime * Time.deltaTime * 3.0f );
             }
         }
         else if( viewState == InventoryViewState.Opening )
@@ -53,7 +53,7 @@ public class DropdownInventoryView : InventoryViewBase
             }
             else
             {
-                rectTransform.anchoredPosition = Vector3.Lerp( rectTransform.anchoredPosition, openPosition, Mathf.Max( openAnimationTime - currentAnimationTime, 0.2f ) / 60.0f );
+                rectTransform.anchoredPosition = Vector2.Lerp( rectTransform.anchoredPosition, openPosition, openAnimationTime * Time.deltaTime * 3.0f );
             }
         }
     }
@@ -78,5 +78,12 @@ public class DropdownInventoryView : InventoryViewBase
         }
 
         currentAnimationTime = 0.0f;
+    }
+
+    public override void Deactivate()
+    {
+        base.Deactivate();
+        viewState = InventoryViewState.Closed;
+        rectTransform.anchoredPosition = closedPosition;
     }
 }
